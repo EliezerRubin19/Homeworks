@@ -7,9 +7,9 @@ public class Pizza {
 	
 	public Pizza(int diameter, int slices, int toppings) {
 		this.diameter = Math.abs((diameter-10))%41+10;
-		this.slices = Math.abs(slices)%9;
+		this.slices = Math.abs(slices-1)%8+1;
 		this.toppings = Math.abs(toppings)%6;
-		count_toppings+=toppings;
+		count_toppings+=this.toppings;
 	}
 
 	public int getDiameter() {
@@ -17,7 +17,7 @@ public class Pizza {
 	}
 
 	public void setDiameter(int diameter) {
-		this.diameter = diameter;
+		this.diameter = Math.abs((diameter-10))%41+10;
 	}
 
 	public int getSlices() {
@@ -25,7 +25,7 @@ public class Pizza {
 	}
 
 	public void setSlices(int slices) {
-		this.slices = slices;
+		this.slices = Math.abs(slices-1)%8+1;
 	}
 
 	public int getToppings() {
@@ -33,7 +33,7 @@ public class Pizza {
 	}
 
 	public void setToppings(int toppings) {
-		this.toppings = toppings;
+		this.toppings = Math.abs(toppings)%6;
 	}
 
 	public boolean isBasicPizza() {
