@@ -33,5 +33,12 @@ public class Suitcase {
 	itemsInSuitcase.add(item);
 	this.setTotalWeight(this.totalWeight+item.getWeight());
 	}
+	public void calcTotalWeight() {
+		int total=0;
+		for(Item i: itemsInSuitcase){
+		total=total+=i.getWeight();
+		}
+		this.setTotalWeight(total);
+		}
 	
 }
