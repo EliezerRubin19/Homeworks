@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Program {
 
@@ -33,8 +34,31 @@ public class Program {
 			System.out.println("No overweight - Enjoy your flight");
 		}else {
 			System.out.println("You have an overweight of "+ow+"\nIt will cost you "+ow*Tzuckerberg.getPriceOfOneKilogramOverweight());
-		}
 
+		
+		System.out.println("Do you want to pay? if not you can remove an item[y/n]");
+		Scanner scan=new Scanner(System.in);
+		String answer=scan.nextLine();
+		if (answer.equals("y")){
+			System.out.println("You paid "+ow*Tzuckerberg.getPriceOfOneKilogramOverweight()+" Dollars - Enjoy the flight");
+		}else{
+			while(ow>0){
+			x=0;
+			for (Item i:Tzuckerberg.getSwissSuitcase().itemsInSuitcase){
+				System.out.println("["+(x+1)+"]"+i.getName()+"  "+i.getWeight());
+				x++;
+			}
+			System.out.println("Your overweight is "+ow+" which item do you want to remove?");
+			int itemNumber=scan.nextInt();
+			Tzuckerberg.getSwissSuitcase().itemsInSuitcase.remove(itemNumber-1);
+			Tzuckerberg.getSwissSuitcase().calcTotalWeight();
+			ow=(Tzuckerberg.getSwissSuitcase().getTotalWeight()-Tzuckerberg.getAllowedSuitcaseWeight());
+
+			}
+			System.out.println("You don't have overweight - enjoy your flight");
+			}
+		}
 	}
 
 }
+
